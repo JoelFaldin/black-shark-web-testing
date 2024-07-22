@@ -56,6 +56,19 @@ describe("Services", () => {
         cy.contains("Node test")
         cy.contains("React service from Cypress!").should("not.exist")
       })
+
+      it.only("Admin can update a service's data", () => {
+        cy.createService("Service Test", 20000, "Service from Cypress!", "./cypress_logo.jpg")
+
+        cy.get("div").contains("Service Test").click()
+        cy.get("button").contains("Editar").click()
+
+        cy.get('input[name="nombre"]').clear().type("Cypress service from Cypress!")
+        cy.get('input[name="precio"]').clear().type(5000)
+        cy.get("button").contains("Guardar Cambios").click()
+
+        cy.contains("Cypress service from Cypress!")
+      })
     })
 
   })
