@@ -28,17 +28,18 @@ describe("Services", () => {
 
     describe("And admin user is logged in", () => {
       beforeEach(() => {
-        cy.request("POST", "http://localhost:3000/api/testing/services")
-
         cy.visit("http://localhost:5173/login")
 
         cy.get('input[name="email"').type("admin@gmail.com")
         cy.get('input[name="password"').type("adminpassword")
         cy.get("button").contains("Ingresar").click()
+
+        cy.get("span").contains("Servicios").click()
       })
 
-      it("User can create a new service", () => {
-        cy.get("span").contains("Servicios").click()
+      it("Admin can create a new service and then delete it", () => {
+        cy.get('button[aria-label="Close"').click()
+
         cy.get('button[name="new-service-button"]').click()
 
         cy.get('input[name="serviceName"]').type("Service test")
@@ -49,6 +50,11 @@ describe("Services", () => {
         cy.get('button[name="button-save-service"]').click()
         
         cy.contains("Servicio creado!")
+
+        cy.get("div").contains("Service test").click()
+        cy.get("button").contains("Eliminar").click()
+
+        cy.contains("Servicio eliminado correctamente!")
       })
     })
 

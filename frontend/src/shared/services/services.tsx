@@ -195,10 +195,10 @@ export const Servicios = () => {
               )}
               {services.map((service) => (
                 <div
-                key={service.id_servicios}
-                className="bg-white rounded-lg shadow-lg transition-shadow hover:shadow-xl cursor-pointer"
-                onClick={() => handleServiceClick(service)}
-              >
+                  key={service.id_servicios}
+                  className="bg-white rounded-lg shadow-lg transition-shadow hover:shadow-xl cursor-pointer"
+                  onClick={() => handleServiceClick(service)}
+                >
                 <img
                   src={service.imagen_link}
                   alt={service.nombre}
