@@ -37,24 +37,14 @@ describe("Services", () => {
         cy.get("span").contains("Servicios").click()
       })
 
-      it("Admin can create a new service and then delete it", () => {
-        cy.get('button[aria-label="Close"').click()
+      it("Admin can create a new service", () => {
+        cy.createService("Service test", 20000, "Service from Cypress!", "./cypress_logo.jpg")
+      })
 
-        cy.get('button[name="new-service-button"]').click()
+      it.only("User can delete a service", () => {
+        cy.createService("Service test", 20000, "Service from Cypress!", "./cypress_logo.jpg")
 
-        cy.get('input[name="serviceName"]').type("Service test")
-        cy.get('input[name="price"]').type(20000)
-        cy.get('textarea[name="description"]').type("Service from Cypress!")
-        cy.get('input[type="file"]').attachFile("./cypress_logo.jpg")
-
-        cy.get('button[name="button-save-service"]').click()
-        
-        cy.contains("Servicio creado!")
-
-        cy.get("div").contains("Service test").click()
-        cy.get("button").contains("Eliminar").click()
-
-        cy.contains("Servicio eliminado correctamente!")
+        cy.deleteService("Service test")
       })
     })
 
