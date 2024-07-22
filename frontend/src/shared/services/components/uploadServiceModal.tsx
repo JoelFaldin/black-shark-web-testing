@@ -88,7 +88,7 @@ export const UploadServiceModal = ({ handleInterface, addService, successToast, 
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 sm:px-0 z-10" onClick={handleInterface}>
-      <div className="bg-white rounded-lg shadow-lg p-6 w-96 max-w-md">
+      <div className="bg-white rounded-lg shadow-lg p-6 w-96 max-w-md" onClick={event => event.stopPropagation()}>
         <h2 className="font-myriad-pro text-xl font-bold mb-4 text-center">
           Agregar Nuevo Servicio
         </h2>
@@ -160,6 +160,7 @@ export const UploadServiceModal = ({ handleInterface, addService, successToast, 
               {progress !== 100 && (
                 <button
                   onClick={handleUpload}
+                  name="button-save-service"
                   className="flex items-center justify-center w-full px-[110px] py-2.5 text-xl font-large text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                 >
                   Guardar

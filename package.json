@@ -1,6 +1,6 @@
 {
   "name": "black_shark_web_testing",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Fork from IgnacioBarraza's BlackSharkWebApp repo. Implementing Cypress to automatize e2e testing.",
   "main": "none",
   "scripts": {
@@ -8,14 +8,16 @@
     "start-frontend": "cd ./frontend && npm run dev",
     "start-backend": "cd ./backend && npm run dev",
     "start-app": "concurrently \"npm run start-frontend\" \"npm run start-backend\"",
+    "start-frontend-test": "cd ./frontend && npm run test",
     "start-backend-test": "cd ./backend && npm run test",
-    "start-test": "concurrently \"npm run start-frontend\" \"npm run start-backend-test\"",
+    "start-test": "concurrently \"npm run start-frontend-test\" \"npm run start-backend-test\"",
     "cypress:open": "npx cypress open"
   },
   "author": "JoelFaldín",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^8.2.2",
-    "cypress": "^13.13.1"
+    "cypress": "^13.13.1",
+    "cypress-file-upload": "^5.0.8"
   }
 }

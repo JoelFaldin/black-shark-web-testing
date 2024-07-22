@@ -6,6 +6,7 @@ export const UploadButton = ({ handleInterface }) => {
     <div className="bg-white rounded-lg">
       <button
         onClick={handleInterface}
+        name="new-service-button"
         className="w-full md:w-[80%] lg:w-[100%] h-80 flex items-center justify-center rounded-lg shadow-md border hover:bg-gray-200 border-gray-300 transition duration-300 ease-in-out transform hover:scale-105"
       >
         <div className="flex flex-col items-center justify-center space-y-4">

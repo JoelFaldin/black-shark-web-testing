@@ -1,6 +1,6 @@
 {
   "name": "backend_testing",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Testing variant of BlackSharkWeb's backend project.",
   "main": "index.ts",
   "scripts": {

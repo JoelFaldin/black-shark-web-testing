@@ -29,8 +29,8 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-app.use(rateLimiter)
-app.use(slowDownLimiter)
+// app.use(rateLimiter)
+// app.use(slowDownLimiter)
 
 app.use('/api/login', loginRouter)
 app.use('/api/get', dataRouter)
