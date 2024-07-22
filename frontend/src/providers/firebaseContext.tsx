@@ -113,7 +113,8 @@ export const FirebaseProvider = ({ children }: FirebaseProviderProps) => {
   }
 
   const deleteImageFromServices = async (image_name: string): Promise<void> => {
-    const imageRef = ref(storage, `service/${image_name}`)
+    const serviceFolder = process.env.NODE_ENV === 'test' ? "service-test" : "service"
+    const imageRef = ref(storage, `${serviceFolder}/${image_name}`)
     await deleteObject(imageRef)
   }
 
