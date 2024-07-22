@@ -179,7 +179,7 @@ export const Servicios = () => {
           <div className="container mx-auto">
             <div className="mb-5">
               <label htmlFor="filters" className="text-sm font-medium leading-6 text-gray-900">Filtrar servicios...</label>
-              <input type="text" id="filters" onChange={event => handleFilterValue(event.target.value)} className="pl-2 py-1 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></input>
+              <input type="text" id="filters" name="input-service-filter" onChange={event => handleFilterValue(event.target.value)} className="pl-2 py-1 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></input>
             </div>
             <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 ml-4 mr-4">
               {userType === "admin" && userToken && (

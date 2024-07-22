@@ -41,10 +41,20 @@ describe("Services", () => {
         cy.createService("Service test", 20000, "Service from Cypress!", "./cypress_logo.jpg")
       })
 
-      it.only("User can delete a service", () => {
+      it("Admin can delete a service", () => {
         cy.createService("Service test", 20000, "Service from Cypress!", "./cypress_logo.jpg")
 
         cy.deleteService("Service test")
+      })
+
+      it("Admin can filter services", () => {
+        cy.createService("React test", 10000, "React service from Cypress!", "./react_logo.png")
+        cy.createService("Node test", 15000, "Node service from Cypress!", "./node_logo.png")
+
+        cy.get('input[name="input-service-filter"]').type("Node")
+
+        cy.contains("Node test")
+        cy.contains("React service from Cypress!").should("not.exist")
       })
     })
 
