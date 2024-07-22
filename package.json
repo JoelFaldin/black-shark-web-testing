@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-frontend": "cd ./frontend && npm run dev",
     "start-backend": "cd ./backend && npm run dev",
-    "start-app": "concurrently \"npm run start-frontend\" \"npm run start-backend\""
+    "start-app": "concurrently \"npm run start-frontend\" \"npm run start-backend\"",
+    "start-backend-test": "cd ./backend && npm run test",
+    "start-test": "concurrently \"npm run start-frontend\" \"npm run start-backend-test\"",
+    "cypress:open": "npx cypress open"
   },
   "author": "JoelFaldín",
   "license": "ISC",

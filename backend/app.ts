@@ -13,6 +13,7 @@ import dataRouter from './routes/getData'
 import equipmentRouter from './routes/equipmentRouter'
 import collabsRouter from './routes/collabsRouter'
 import buymentRouter from './routes/buymentRouter'
+import testingRouter from './routes/testing'
 
 // Middleware:
 import verifyToken from './middleware/verifyToken'
@@ -34,6 +35,10 @@ app.use(slowDownLimiter)
 app.use('/api/login', loginRouter)
 app.use('/api/get', dataRouter)
 app.use('/api/message', messageRouter)
+
+if (process.env.NODE_ENV === 'test') {
+  app.use('/api/testing', testingRouter)
+}
 
 app.use('', verifyToken)
 
