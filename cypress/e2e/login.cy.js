@@ -29,4 +29,12 @@ describe("Login", () => {
 
     cy.contains("Usuario verificado con exito. Redirigiendo...")
   })
+
+  it("User cant log in with incorrect credentials", () => {
+    cy.get('input[name="email"]').type("testing@gmail.com")
+    cy.get('input[name="password"]').type("wrong passwprd")
+    cy.get("button").click()
+
+    cy.contains("Contraseña incorrecta.")
+  })
 })
