@@ -27,7 +27,7 @@ describe("Login", () => {
     cy.get('input[name="password"]').type("thetestingpassword")
     cy.get("button").click()
 
-    cy.contains("Usuario verificado con exito. Redirigiendo...")
+    cy.get('div[data-status="success"]').should("contain", "Usuario verificado con exito. Redirigiendo...")
   })
 
   it("User cant log in with incorrect credentials", () => {
@@ -35,7 +35,7 @@ describe("Login", () => {
     cy.get('input[name="password"]').type("wrong passwprd")
     cy.get("button").click()
 
-    cy.contains("Contraseña incorrecta.")
+    cy.get('div[data-status="error"]').should("contain", "Contraseña incorrecta.")
   })
 
   it("User can't log in with an email that doesn't exists", () => {
@@ -43,6 +43,6 @@ describe("Login", () => {
     cy.get('input[name="password"]').type("randompassword")
     cy.get("button").contains("Ingresar").click()
 
-    cy.get('div[data-status="error"]').should('contain', 'Usuario no encontrado.')
+    cy.get('div[data-status="error"]').should("contain", "Usuario no encontrado.")
   })
 })
