@@ -9,6 +9,7 @@ describe("Services", () => {
     cy.get("span").contains("Servicios").click()
 
     cy.contains("Filtrar servicios...")
+    cy.get("label").should("contain", "Filtrar servicios")
   })
 
   describe("When admin user exists", () => {
@@ -23,7 +24,7 @@ describe("Services", () => {
       cy.get('input[name="password"').type("adminpassword")
       cy.get("button").contains("Ingresar").click()
 
-      cy.contains("Usuario verificado con exito. Redirigiendo...")
+      cy.get('div[data-status="success"]').should("contain", "Usuario verificado con exito. Redirigiendo...")
     })
 
     describe("And admin user is logged in", () => {
@@ -57,7 +58,7 @@ describe("Services", () => {
         cy.contains("React service from Cypress!").should("not.exist")
       })
 
-      it("Admin can update a service's data", () => {
+      it.only("Admin can update a service's data", () => {
         cy.createService("Service Test", 20000, "Service from Cypress!", "./cypress_logo.jpg")
 
         cy.get("div").contains("Service Test").click()
@@ -67,7 +68,8 @@ describe("Services", () => {
         cy.get('input[name="precio"]').clear().type(5000)
         cy.get("button").contains("Guardar Cambios").click()
 
-        cy.contains("Cypress service from Cypress!")
+        cy.get("div").contains("Cypress service from Cypress!").click()
+        cy.get("h2").should("contain", "Cypress service from Cypress!")
       })
     })
 

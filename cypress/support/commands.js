@@ -37,12 +37,12 @@ Cypress.Commands.add("createService", (name, price, desc, filePath) => {
 
   cy.get('button[name="button-save-service"]').click()
   
-  cy.contains("Servicio creado!")
+  cy.get('div[data-status="success"]').should("contain", "Servicio creado!")
 })
 
 Cypress.Commands.add('deleteService', (serviceName) => {
   cy.get("div").contains(serviceName).click()
   cy.get("button").contains("Eliminar").click()
   
-  cy.contains("Servicio eliminado correctamente!")
+  cy.get('div[data-status="success"]').should("contain", "Servicio eliminado correctamente!")
 })
