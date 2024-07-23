@@ -37,4 +37,12 @@ describe("Login", () => {
 
     cy.contains("Contraseña incorrecta.")
   })
+
+  it("User can't log in with an email that doesn't exists", () => {
+    cy.get('input[name="email"]').type("nonexisting@gmail.com")
+    cy.get('input[name="password"]').type("randompassword")
+    cy.get("button").contains("Ingresar").click()
+
+    cy.get('div[data-status="error"]').should('contain', 'Usuario no encontrado.')
+  })
 })
