@@ -23,26 +23,33 @@ describe("Login", () => {
   })
 
   it("User can log in with correct credentials", () => {
-    cy.get('input[name="email"]').type("testing@gmail.com")
-    cy.get('input[name="password"]').type("thetestingpassword")
-    cy.get("button").click()
+    cy.login("testing@gmail.com", "thetestingpassword")
 
     cy.get('div[data-status="success"]').should("contain", "Usuario verificado con exito. Redirigiendo...")
   })
 
   it("User cant log in with incorrect credentials", () => {
-    cy.get('input[name="email"]').type("testing@gmail.com")
-    cy.get('input[name="password"]').type("wrong passwprd")
-    cy.get("button").click()
+    cy.login("testing@gmail.com", "wrong password")
 
     cy.get('div[data-status="error"]').should("contain", "Contraseña incorrecta.")
   })
 
   it("User can't log in with an email that doesn't exists", () => {
-    cy.get('input[name="email"]').type("nonexisting@gmail.com")
-    cy.get('input[name="password"]').type("randompassword")
-    cy.get("button").contains("Ingresar").click()
+    cy.login("nonexisting@gmail.com", "randompassword")
 
     cy.get('div[data-status="error"]').should("contain", "Usuario no encontrado.")
+  })
+
+  it("User can't log in without an email", () => {
+    cy.get("button").contains("Ingresar").click()
+
+    cy.get('div[data-status="error"]').should("contain", "Debes ingresar un correo.")
+  })
+
+  it("User can't log in without a password", () => {
+    cy.get('input[name="email"]').type("admin@gmail.com")
+    cy.get("button").contains("Ingresar").click()
+
+    cy.get('div[data-status="error"]').should("contain", "Ingresa una contraseña!")
   })
 })

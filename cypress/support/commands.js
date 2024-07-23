@@ -46,3 +46,10 @@ Cypress.Commands.add('deleteService', (serviceName) => {
   
   cy.get('div[data-status="success"]').should("contain", "Servicio eliminado correctamente!")
 })
+
+Cypress.Commands.add('login', (email, password) => {
+  cy.get('input[name="email"]').type(email)
+  cy.get('input[name="password"]').type(password)
+
+  cy.get("button").contains("Ingresar").click()
+})

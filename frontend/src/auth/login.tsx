@@ -29,6 +29,13 @@ export const Login = () => {
     setTokenData(null)
     setUserName(null)
     setUserId(null)
+
+    if (user.email === "") {
+      return errorToastNotification("Debes ingresar un correo.")
+    } else if (user.password === "") {
+      return errorToastNotification("Ingresa una contraseña!")
+    }
+
     const userToVerify: userToVerify = {
       email: user.email,
       password: user.password,
