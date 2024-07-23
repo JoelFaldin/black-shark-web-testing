@@ -74,7 +74,6 @@ export const Colaboration = () => {
   };
 
   const handleImageUpload = () => {
-    if (selectedServices.length === 0) return alert('Debes seleccionar al menos un servicio asociado a la colaboración!');
     uploadCollaborationImage(
       image,
       (progress) => setProgress(progress),

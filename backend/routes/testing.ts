@@ -13,6 +13,7 @@ testingRouter.post("/reset", async (req, res) => {
   try {
     await connection.query(`DELETE FROM usuario`)
     await connection.query(`DELETE FROM servicios`)
+    await connection.query(`DELETE FROM collaboration`)
     return res.status(201).json({ message: "Users and services from testing database cleaned!" })
   } catch (error) {
     return res.status(500).json(error)

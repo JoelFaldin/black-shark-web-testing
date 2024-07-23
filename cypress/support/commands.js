@@ -53,3 +53,12 @@ Cypress.Commands.add('login', (email, password) => {
 
   cy.get("button").contains("Ingresar").click()
 })
+
+Cypress.Commands.add("addCollab", (name, filePath) => {
+  cy.get("div").contains("Agregar Colaboración").click()
+
+  cy.get('input[name="collabName"]').type(name)
+  cy.get('input[type="file"]').attachFile(filePath)
+
+  cy.get("button").contains("Guardar").click()
+})
