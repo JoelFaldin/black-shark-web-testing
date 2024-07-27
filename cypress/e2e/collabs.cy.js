@@ -6,6 +6,10 @@ describe("Collaborations", () => {
     cy.request("POST", "http://localhost:3000/api/testing/admin")
   })
 
+  it("User can see colaborations section", () => {
+    cy.get("span").should("contain", "Colaboraciones")
+  })
+
   describe("When admin exists", () => {
     beforeEach(() => {
       cy.get("span").contains("Iniciar Sesión").click()
