@@ -35,15 +35,16 @@ export const ImageModal = ({ image, onClose, deleteImage }) => {
           icon={faCircleXmark}
           className="absolute top-4 right-4 text-white text-4xl hover:animate-beat-fade"
           onClick={onClose}
-        />
+          />
         {userType === "admin" && userToken && (
           <FontAwesomeIcon
-            icon={faTrashAlt}
-            className="absolute top-4 left-4 text-white text-4xl hover:animate-beat-fade"
-            onClick={(e) => {
-              e.stopPropagation()
-              deleteImage(image)
-            }}
+          icon={faTrashAlt}
+          className="absolute top-4 left-4 text-white text-4xl hover:animate-beat-fade"
+          onClick={(e) => {
+            e.stopPropagation()
+            deleteImage(image)
+          }}
+          data-testid="remove-button"
           />
         )}
       </div>

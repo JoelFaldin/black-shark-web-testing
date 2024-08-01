@@ -339,11 +339,10 @@ export const Colaboration = () => {
             </div>
           )}
           {colaboration.map((colaboration, index) => (
-              <div key={index} className="flex flex-col items-center">
+              <div key={index} className="flex flex-col items-center" onClick={() => setSelectedCollab(colaboration)}>
                 <img
                   src={colaboration.imagen_link}
                   alt={`Logo ${index}`}
-                  onClick={() => setSelectedCollab(colaboration)}
                   className="h-64 w-64 flex items-center justify-center text-white font-bold rounded-full object-cover" />
                 <p className="mt-2 text-center">{colaboration.nombre_empresa}</p>
               </div>

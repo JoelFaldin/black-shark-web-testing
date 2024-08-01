@@ -21,5 +21,15 @@ describe("Collaborations", () => {
 
       cy.contains("p", "Cypress Collab").should("be.visible")
     })
+
+    it.only("Admin can add an imagen and then delete it", () => {
+      cy.addCollab("Cypress Collab Test", "./cypress_logo.jpg")
+      cy.contains("p", "Cypress Collab Test").should("be.visible")
+
+      cy.get("p").contains("Cypress Collab Test").click()
+
+      cy.get('[data-testid="remove-button"]').click()
+      cy.get('div[data-status="success"]').should("contain", "Los datos de la colaboración se han eliminado con éxito.")
+    })
   })
 })
