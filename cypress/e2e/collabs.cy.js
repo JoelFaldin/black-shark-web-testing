@@ -22,7 +22,7 @@ describe("Collaborations", () => {
       cy.contains("p", "Cypress Collab").should("be.visible")
     })
 
-    it.only("Admin can add an imagen and then delete it", () => {
+    it("Admin can add an imagen and then delete it", () => {
       cy.addCollab("Cypress Collab Test", "./cypress_logo.jpg")
       cy.contains("p", "Cypress Collab Test").should("be.visible")
 
@@ -30,6 +30,23 @@ describe("Collaborations", () => {
 
       cy.get('[data-testid="remove-button"]').click()
       cy.get('div[data-status="success"]').should("contain", "Los datos de la colaboración se han eliminado con éxito.")
+    })
+  })
+
+  describe("User can see an existing collaboration", () => {
+    beforeEach(() => {
+      cy.get("span").contains("Iniciar Sesión").click()
+      cy.login("admin@gmail.com", "adminpassword")
+      cy.addCollab("Cypress Collab Test", "./cypress_logo.jpg")
+
+      cy.contains("p", "Cypress Collab Test").should("be.visible")
+      cy.get("span").contains("admintest").click()
+      cy.get("button").contains("Cerrar Sesión").click()
+    })
+
+    it.only("User not logged in can see collaboration", () => {
+      cy.get("span").should("contain", "Colaboraciones")
+      cy.get("p").should("contain", "Cypress Collab Test")
     })
   })
 })
