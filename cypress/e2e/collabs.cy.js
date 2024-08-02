@@ -44,7 +44,7 @@ describe("Collaborations", () => {
       cy.get("button").contains("Cerrar Sesión").click()
     })
 
-    it.only("User not logged in can see collaboration", () => {
+    it("User not logged in can see collaboration", () => {
       cy.get("span").should("contain", "Colaboraciones")
       cy.get("p").should("contain", "Cypress Collab Test")
     })
